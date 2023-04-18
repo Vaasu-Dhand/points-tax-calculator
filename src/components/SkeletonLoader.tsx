@@ -27,7 +27,7 @@ export const SkeletonLoader = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {[...Array(5)].map((_, index) => (
+          {[...Array(4)].map((_, index) => (
             <TableRow key={index}>
               <TableCell>
                 <Skeleton />

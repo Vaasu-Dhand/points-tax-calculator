@@ -14,7 +14,7 @@ import { SkeletonLoader } from './SkeletonLoader';
 import { useTaxContext } from '../hooks/useTaxContext';
 import { getTaxBracketIndex } from '../utils/getTaxBracketIndex';
 
-export const Tax = () => {
+export const Tax = ({ setAlertProps }) => {
   const [bracketIdx, setBracketIdx] = useState<number | undefined>();
   const { isCalculating, data, annualIncome } = useTaxContext();
 
@@ -26,6 +26,7 @@ export const Tax = () => {
       // If we cannot evaluate user's tax bracket
       if (userBracketIndex === -1) {
         console.error('Could not evaluate tax bracket');
+        setAlertProps({ isOpen: true, message: 'Something went wrong' });
       }
 
       setBracketIdx(userBracketIndex);

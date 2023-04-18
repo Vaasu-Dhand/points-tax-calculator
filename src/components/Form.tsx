@@ -5,7 +5,7 @@ import { useTaxContext } from '../hooks/useTaxContext';
 
 type Props = {};
 
-export const Form = (props: Props) => {
+export const Form = ({ setAlertProps }) => {
   const [income, setIncome] = useState<number>();
   const [year, setYear] = useState<number>();
 
@@ -13,6 +13,11 @@ export const Form = (props: Props) => {
   const { isCalculating, setAnnualIncome } = useTaxContext();
 
   const handleOnClick = () => {
+    setAlertProps((prev) => ({
+      ...prev,
+      isOpen: false,
+    }));
+
     // Validate input here before making reuest
     if (typeof income !== 'number') {
       // TODO: Fire toast for income must be a number
@@ -68,8 +73,12 @@ export const Form = (props: Props) => {
           onChange={handleYearChange}
         />
         <br />
-
-        <Button variant="contained" onClick={handleOnClick} disabled={isCalculating}>
+        <Button
+          variant="contained"
+          onClick={handleOnClick}
+          disabled={isCalculating}
+          size="large"
+        >
           Calculate
         </Button>
       </form>
