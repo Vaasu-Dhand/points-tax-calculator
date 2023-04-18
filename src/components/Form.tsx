@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useCalculateTax } from '../hooks/useCalculateTax';
+import { useTaxContext } from '../hooks/useTaxContext';
 
 type Props = {};
 
@@ -8,9 +9,21 @@ export const Form = (props: Props) => {
   const [income, setIncome] = useState<number>();
   const [year, setYear] = useState<number>();
 
-  
+  const [calculateTax] = useCalculateTax();
+  const { isCalculating } = useTaxContext();
 
-  console.log({ error, data, isCalculating });
+  const handleOnClick = () => {
+    // Validate input here before making reuest
+    if (typeof income !== 'number') {
+      // TODO: Fire toast for income must be a number
+    } else if (typeof year !== 'number') {
+      // TODO: Fire toast for year must be a number
+    } else {
+      calculateTax(income, year);
+    }
+  };
+
+  console.log({ isCalculating });
 
   // console.log(income, year);
 
@@ -25,8 +38,6 @@ export const Form = (props: Props) => {
   }: React.ChangeEvent<HTMLInputElement>) => {
     setYear(parseFloat(value));
   };
-
-
 
   return (
     <form>
@@ -49,7 +60,9 @@ export const Form = (props: Props) => {
         onChange={handleYearChange}
       />
       <br />
-      
+      <Button variant="contained" onClick={handleOnClick} disabled={isCalculating}>
+        Calculate
+      </Button>
     </form>
   );
 };

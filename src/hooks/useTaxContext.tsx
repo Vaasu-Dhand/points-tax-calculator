@@ -1,13 +1,24 @@
-import React, { useContext, createContext, useState } from 'react';
+import React, { useContext, createContext, useState, ReactNode } from 'react';
 
-// Custom Hook for consuming & setting tax state
+// Custom Hook for consuming & setting tax state using React's Context API
 
-const TaxContext = createContext();
+const TaxContext = createContext<TaxContextType>({
+  error: { isError: false, errorMessage: '' },
+  setIsError: () => {},
+  isCalculating: false,
+  setIsCalculating: () => {},
+  data: undefined,
+  setData: () => {},
+});
 
-export const TaxProvider = ({ children }) => {
-  const [error, setIsError] = useState({ isError: false, errorMessage: '' });
-  const [isCalculating, setIsCalculating] = useState(false);
-  const [data, setData] = useState();
+type TaxProviderProps = {
+  children: ReactNode;
+};
+
+export const TaxProvider = ({ children }: TaxProviderProps) => {
+  const [error, setIsError] = useState<ErrorState>({ isError: false, errorMessage: '' });
+  const [isCalculating, setIsCalculating] = useState<boolean>(false);
+  const [data, setData] = useState<any>();
 
   return (
     <TaxContext.Provider
@@ -20,4 +31,18 @@ export const TaxProvider = ({ children }) => {
 
 export const useTaxContext = () => {
   return useContext(TaxContext);
+};
+
+type ErrorState = {
+  isError: boolean;
+  errorMessage: string;
+};
+
+type TaxContextType = {
+  error: ErrorState;
+  setIsError: (errorState: ErrorState) => void;
+  isCalculating: boolean;
+  setIsCalculating: (isCalc: boolean) => void;
+  data: any;
+  setData: (data: any) => void;
 };
