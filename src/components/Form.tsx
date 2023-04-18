@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useCalculateTax } from '../hooks/useCalculateTax';
 import { useTaxContext } from '../hooks/useTaxContext';
@@ -22,10 +22,6 @@ export const Form = (props: Props) => {
       calculateTax(income, year);
     }
   };
-
-  console.log({ isCalculating });
-
-  // console.log(income, year);
 
   const handleIncomeChange = ({
     target: { value },
