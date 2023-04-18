@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ReactComponent as ServerError } from '../../public/images/server-error.svg';
+import { ReactComponent as ServerError } from '../../../public/images/server-error.svg'
 import {
   TableContainer,
   Table,
@@ -10,9 +10,9 @@ import {
   TableBody,
 } from '@mui/material';
 
-import { SkeletonLoader } from './SkeletonLoader';
-import { useTaxContext } from '../hooks/useTaxContext';
-import { getTaxBracketIndex } from '../utils/getTaxBracketIndex';
+import { SkeletonLoader } from '../SkeletonLoader';
+import { useTaxContext } from '../../hooks/useTaxContext';
+import { getTaxBracketIndex } from '../../utils/getTaxBracketIndex';
 
 export const Tax = ({ setAlertProps }) => {
   const [bracketIdx, setBracketIdx] = useState<number | undefined>();
@@ -74,7 +74,6 @@ export const Tax = ({ setAlertProps }) => {
               </TableBody>
             </Table>
           </TableContainer>
-          {/* TODO: Handle NaN error here */}
           <Paper sx={{ height: '2rem' }}>
             <h3 style={{ textAlign: 'center' }}>
               Your Tax would be: ${taxAmount.toFixed(2)}

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Paper } from '@mui/material';
-import { useCalculateTax } from '../hooks/useCalculateTax';
-import { useTaxContext } from '../hooks/useTaxContext';
-
-type Props = {};
+import { useCalculateTax } from '../../hooks/useCalculateTax';
+import { useTaxContext } from '../../hooks/useTaxContext';
 
 export const Form = ({ setAlertProps }) => {
   const [income, setIncome] = useState<number>();
