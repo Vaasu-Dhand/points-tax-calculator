@@ -9,8 +9,6 @@ interface TaxData {
 }
 
 export function getTaxBracketIndex(taxData: TaxData, income: number): number {
-  console.log(taxData);
-
   const bracketIndex = taxData.tax_brackets.findIndex((bracket) => {
     return income >= bracket.min && income <= bracket.max;
   });
