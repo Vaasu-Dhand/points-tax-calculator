@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
-import { Typography, Container } from '@mui/material';
 import { Form } from './components/Form';
 import { Tax } from './components/Tax';
 import { Navbar } from './components/Navbar';
-
-import './App.css';
+import { Container } from '@mui/material';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <div style={containerStyles}>
+      <Container sx={containerStyles}>
         <Form />
         <Tax />
-      </div>
+      </Container>
     </div>
   );
 }
@@ -24,7 +22,8 @@ const containerStyles = {
   display: 'flex',
   justifyContent: 'space-around',
   alignItems: 'center',
-  marginTop: '6rem',
-  paddingRight: '4rem',
-  paddingLeft: '4rem',
+  marginTop: '8rem',
+  height: '100%',
+  // paddingRight: '4rem',
+  // paddingLeft: '4rem',
 };

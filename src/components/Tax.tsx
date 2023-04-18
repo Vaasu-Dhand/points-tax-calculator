@@ -26,7 +26,6 @@ export const Tax = () => {
       // If we cannot evaluate user's tax bracket
       if (userBracketIndex === -1) {
         console.error('Could not evaluate tax bracket');
-        return '';
       }
 
       setBracketIdx(userBracketIndex);
@@ -38,7 +37,7 @@ export const Tax = () => {
     return <SkeletonLoader />;
   }
 
-  // Render Error UI
+  // Render Error Component
   if (data?.errors) {
     return <ServerError style={{ zoom: '0.4' }} />;
   }
@@ -75,7 +74,11 @@ export const Tax = () => {
             </Table>
           </TableContainer>
           {/* TODO: Handle NaN error here */}
-          <h6>Your Tax would be: ${taxAmount.toFixed(2)}</h6>
+          <Paper sx={{ height: '2rem' }}>
+            <h3 style={{ textAlign: 'center' }}>
+              Your Tax would be: ${taxAmount.toFixed(2)}
+            </h3>
+          </Paper>
         </>
       )}
     </div>

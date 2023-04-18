@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Paper } from '@mui/material';
 import { useCalculateTax } from '../hooks/useCalculateTax';
 import { useTaxContext } from '../hooks/useTaxContext';
 
@@ -37,30 +37,42 @@ export const Form = (props: Props) => {
   };
 
   return (
-    <form style={{ minWidth: '500px', height: '100%' }}>
-      <TextField
-        style={{ margin: '5px' }}
-        type="number"
-        label="Annual Income"
-        variant="outlined"
-        // NOTE: Optionally setting value to empty string so that the component remains Controlled at all times.
-        value={income || ''}
-        onChange={handleIncomeChange}
-      />
-      <br />
-      <TextField
-        style={{ margin: '5px' }}
-        type="text"
-        label="Tax Year"
-        variant="outlined"
-        value={year || ''}
-        onChange={handleYearChange}
-      />
-      <br />
+    <Paper elevation={3} sx={{ height: '100%' }}>
+      <form
+        style={{
+          padding: '2rem',
+          minWidth: '500px',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <TextField
+          style={{ margin: '5px' }}
+          type="number"
+          label="Annual Income"
+          variant="outlined"
+          // NOTE: Optionally setting value to empty string so that the component remains Controlled at all times.
+          value={income || ''}
+          onChange={handleIncomeChange}
+        />
+        <br />
+        <TextField
+          style={{ margin: '5px' }}
+          type="text"
+          label="Tax Year"
+          variant="outlined"
+          value={year || ''}
+          onChange={handleYearChange}
+        />
+        <br />
 
-      <Button variant="contained" onClick={handleOnClick} disabled={isCalculating}>
-        Calculate
-      </Button>
-    </form>
+        <Button variant="contained" onClick={handleOnClick} disabled={isCalculating}>
+          Calculate
+        </Button>
+      </form>
+    </Paper>
   );
 };
