@@ -3,6 +3,7 @@ import { TextField, Button } from '@mui/material';
 import { useCalculateTax } from '../hooks/useCalculateTax';
 import { useTaxContext } from '../hooks/useTaxContext';
 
+
 type Props = {};
 
 export const Form = (props: Props) => {
@@ -36,9 +37,9 @@ export const Form = (props: Props) => {
   };
 
   return (
-    <form>
+    <form style={{ minWidth: '500px', height: '100%' }}>
       <TextField
-        style={{ width: '200px', margin: '5px' }}
+        style={{ margin: '5px' }}
         type="number"
         label="Annual Income"
         variant="outlined"
@@ -48,7 +49,7 @@ export const Form = (props: Props) => {
       />
       <br />
       <TextField
-        style={{ width: '200px', margin: '5px' }}
+        style={{ margin: '5px' }}
         type="text"
         label="Tax Year"
         variant="outlined"
@@ -56,6 +57,7 @@ export const Form = (props: Props) => {
         onChange={handleYearChange}
       />
       <br />
+
       <Button variant="contained" onClick={handleOnClick} disabled={isCalculating}>
         Calculate
       </Button>

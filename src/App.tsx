@@ -9,14 +9,22 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Container maxWidth="lg">
-        <Navbar />
-        <Typography variant="h5">🚀 Tax Calculator 🔥</Typography>
+      <Navbar />
+      <div style={containerStyles}>
         <Form />
         <Tax />
-      </Container>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+const containerStyles = {
+  display: 'flex',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  marginTop: '6rem',
+  paddingRight: '4rem',
+  paddingLeft: '4rem',
+};

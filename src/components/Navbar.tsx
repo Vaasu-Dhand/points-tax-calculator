@@ -10,7 +10,7 @@ export function Navbar() {
       >
         <img src="images/Points.png" alt="logo" />
 
-        <Typography variant="h5" color="inherit" component="h5">
+        <Typography variant="h5" color="black" component="h5">
           Tax Calulator
         </Typography>
       </Toolbar>
