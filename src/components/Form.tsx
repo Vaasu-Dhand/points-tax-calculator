@@ -3,7 +3,6 @@ import { TextField, Button } from '@mui/material';
 import { useCalculateTax } from '../hooks/useCalculateTax';
 import { useTaxContext } from '../hooks/useTaxContext';
 
-
 type Props = {};
 
 export const Form = (props: Props) => {
@@ -11,7 +10,7 @@ export const Form = (props: Props) => {
   const [year, setYear] = useState<number>();
 
   const [calculateTax] = useCalculateTax();
-  const { isCalculating } = useTaxContext();
+  const { isCalculating, setAnnualIncome } = useTaxContext();
 
   const handleOnClick = () => {
     // Validate input here before making reuest
@@ -20,6 +19,7 @@ export const Form = (props: Props) => {
     } else if (typeof year !== 'number') {
       // TODO: Fire toast for year must be a number
     } else {
+      setAnnualIncome(income);
       calculateTax(income, year);
     }
   };

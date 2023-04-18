@@ -12,11 +12,23 @@ import {
 
 import { SkeletonLoader } from './SkeletonLoader';
 import { useTaxContext } from '../hooks/useTaxContext';
+import { getTaxBracketIndex } from '../utils/getTaxBracketIndex';
 
 type Props = {};
 
 export const Tax = (props: Props) => {
-  const { isCalculating, data } = useTaxContext();
+  const { isCalculating, data, annualIncome } = useTaxContext();
+
+  const getBorderStyle = (bracketIndex: number) => {
+    const userBracketIndex = getTaxBracketIndex(data, annualIncome);
+
+    // If we cannot evaluate user's tax bracket
+    if (userBracketIndex === -1) {
+      console.log('Could not evaluate tax bracket');
+      return '';
+    }
+    return userBracketIndex === bracketIndex ? '2px solid red' : '';
+  };
 
   // Render Skeleton Loader
   if (isCalculating) {
@@ -27,8 +39,6 @@ export const Tax = (props: Props) => {
   if (data?.errors) {
     return <ServerError style={{ zoom: '0.4' }} />;
   }
-
-  console.log({ data });
 
   return (
     <div style={{ minWidth: '500px' }}>
@@ -44,7 +54,7 @@ export const Tax = (props: Props) => {
             </TableHead>
             <TableBody>
               {data.tax_brackets.map((slab: TaxSlab, index: number) => (
-                <TableRow key={index}>
+                <TableRow key={index} sx={{ border: getBorderStyle(index) }}>
                   <TableCell>{slab.min}</TableCell>
                   <TableCell>{slab?.max ?? '∞'}</TableCell>
                   <TableCell>{slab.rate}</TableCell>

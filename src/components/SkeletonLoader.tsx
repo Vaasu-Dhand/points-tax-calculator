@@ -16,13 +16,13 @@ export const SkeletonLoader = () => {
         <TableHead>
           <TableRow>
             <TableCell>
-              <Skeleton width={100} />
+              <Skeleton />
             </TableCell>
             <TableCell>
-              <Skeleton width={100} />
+              <Skeleton />
             </TableCell>
             <TableCell>
-              <Skeleton width={100} />
+              <Skeleton />
             </TableCell>
           </TableRow>
         </TableHead>

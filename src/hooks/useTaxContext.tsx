@@ -9,6 +9,8 @@ const TaxContext = createContext<TaxContextType>({
   setIsCalculating: () => {},
   data: undefined,
   setData: () => {},
+  annualIncome: undefined,
+  setAnnualIncome: () => {}
 });
 
 type TaxProviderProps = {
@@ -19,10 +21,20 @@ export const TaxProvider = ({ children }: TaxProviderProps) => {
   const [error, setIsError] = useState<ErrorState>({ isError: false, errorMessage: '' });
   const [isCalculating, setIsCalculating] = useState<boolean>(false);
   const [data, setData] = useState<any>();
+  const [annualIncome, setAnnualIncome] = useState<number | undefined>();
 
   return (
     <TaxContext.Provider
-      value={{ error, setIsError, isCalculating, setIsCalculating, data, setData }}
+      value={{
+        error,
+        setIsError,
+        isCalculating,
+        setIsCalculating,
+        data,
+        setData,
+        annualIncome,
+        setAnnualIncome,
+      }}
     >
       {children}
     </TaxContext.Provider>
@@ -45,4 +57,6 @@ type TaxContextType = {
   setIsCalculating: (isCalc: boolean) => void;
   data: any;
   setData: (data: any) => void;
+  annualIncome: number | undefined;
+  setAnnualIncome: (annualIncome: number) => void;
 };
