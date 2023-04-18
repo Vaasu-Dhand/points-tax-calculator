@@ -29,4 +29,6 @@ I wrote two custom hooks to demonstrate my grasp on react hooks.
 ## What I would have improved, if I had more time:
 1. **Tests** - I wanted to write more and better tests. Due to the lack of time I could not spare much time for writing tests.
 2. **Organizing Types** - I wanted to create shared types/interfaces to avoid repetition of TS code. 
+3. **Content Layout Shifting** - The Form and Output shift after the calculate button is clicked.
+4. **Prevent Extra API Call** - If the year entered stays the same we don't need to re-fetch the data.
 3. **Styling** - Some more custom CSS would have improved the user experience a lot. CSS is added sugar!

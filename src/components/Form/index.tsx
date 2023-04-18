@@ -18,9 +18,15 @@ export const Form = ({ setAlertProps }) => {
 
     // Validate input here before making reuest
     if (typeof income !== 'number') {
-      // TODO: Fire toast for income must be a number
+      setAlertProps({
+        isOpen: true,
+        message: 'Please enter your annual income'
+      });
     } else if (typeof year !== 'number') {
-      // TODO: Fire toast for year must be a number
+      setAlertProps({
+        isOpen: true,
+        message: 'Please enter a year'
+      });
     } else {
       setAnnualIncome(income);
       calculateTax(income, year);
